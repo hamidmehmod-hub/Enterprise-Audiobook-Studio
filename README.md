@@ -23,6 +23,55 @@ Ensure Python is installed on your operating system.
 
 ### 2. FFmpeg (Required for MP4 Video Export)
 FFmpeg must be installed and registered in your environment system PATH if you wish to export MP4 videos.
+
 * **Windows (via Winget):**
-  ```cmd
-  winget install ffmpeg
+      winget install ffmpeg
+
+* **macOS (via Homebrew):**
+      brew install ffmpeg
+
+* **Linux (Ubuntu/Debian):**
+      sudo apt update && sudo apt install -y ffmpeg
+
+---
+
+## 🚀 Quick Start & Installation
+
+1. **Clone the Repository:**
+      git clone https://github.com/hamidmehmod-hub/Enterprise-Audiobook-Studio.git
+      cd Enterprise-Audiobook-Studio
+
+2. **Create & Activate a Virtual Environment:**
+   * **Windows:**
+         python -m venv venv
+         venv\Scripts\activate
+
+   * **macOS / Linux:**
+         python3 -m venv venv
+         source venv/bin/activate
+
+3. **Install Dependencies:**
+      pip install -r requirements.txt
+
+4. **Run the Application:**
+      streamlit run app.py
+
+---
+
+## 🔑 Environment Variables (Optional)
+
+You can set your Gemini API key as an environment variable to avoid entering it manually in the UI every session:
+
+* **Windows (CMD):**
+      set GEMINI_API_KEY="your_api_key_here"
+
+* **macOS / Linux:**
+      export GEMINI_API_KEY="your_api_key_here"
+
+---
+
+## 🛡️ Privacy & Data Security
+
+* **Local Audio Processing:** All TTS audio rendering, chapter chunking, database storage, and video assembly occur locally on your machine.
+* **Zero API Key Storage:** API keys entered into the UI are held exclusively in Streamlit in-memory session state and are never written to disk or logs.
+* **Ignored Workspace Files:** The included `.gitignore` prevents project workspaces, local caches, and generated audio assets from being tracked or pushed to public Git repositories.
