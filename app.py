@@ -990,9 +990,17 @@ def main():
                 if pdf_files:
                     engine = st.radio("PDF Engine:", ["🤖 Gemini Vision AI", "⚡ Local EasyOCR (CPU/GPU)"], index=0)
                     if "Gemini" in engine:
-                        default_api_key = os.environ.get("GEMINI_API_KEY", "")
-                        gem_key = st.text_input("Gemini API Key:", value=default_api_key, type="password", placeholder="Enter your Google Gemini API Key here")
-                
+    raw_key = os.environ.get("GEMINI_API_KEY", "")
+    # Automatically ignore dummy placeholder strings
+    dummy_placeholders = ["your_actual_gemini_api_key", "your_gemini_api_key_here", "your_api_key_here"]
+    default_api_key = "" if raw_key.strip().lower() in dummy_placeholders else raw_key
+    
+    gem_key = st.text_input(
+        "Gemini API Key:", 
+        value=default_api_key, 
+        type="password", 
+        placeholder="Enter your Google Gemini API Key here (e.g., AIzaSy...)"
+    )                
                 start_page, end_page = None, None
                 if is_single_pdf:
                     doc_temp = fitz.open(stream=files[0].getvalue(), filetype="pdf")
