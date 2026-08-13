@@ -997,8 +997,7 @@ def main():
                         gem_key = st.text_input(
                             "Gemini API Key:", 
                             value=default_api_key, 
-                            type="password", 
-                            placeholder="Enter your Google Gemini API Key here (e.g., AIzaSy...)"
+                            placeholder="Paste your Gemini API key here"
                         )                
                 start_page, end_page = None, None
                 if is_single_pdf:
